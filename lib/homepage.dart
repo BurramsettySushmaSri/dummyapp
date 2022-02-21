@@ -1,9 +1,9 @@
-import 'dart:async';
-import 'dart:html';
+
 
 import 'package:flutter/material.dart';
 import 'modal.dart';
 
+// ignore: camel_case_types
 class Home_Page extends StatefulWidget {
   const Home_Page({Key? key}) : super(key: key);
 
