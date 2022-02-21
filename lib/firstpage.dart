@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
                 children: <Widget>[
                   SizedBox(
                     height: 200,
-                    // child:Expanded(
+                  
                     child: ListView.builder(
                       shrinkWrap: true,
                       scrollDirection: Axis.horizontal,
@@ -42,8 +42,10 @@ class MyApp extends StatelessWidget {
             : Row(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
-                  SizedBox(
-                    width: 300,
+                  
+                    SizedBox(
+                      width: 300,
+                    
                     child: ListView.builder(
                       shrinkWrap: true,
                       itemCount: 5,
@@ -70,31 +72,32 @@ class MyApp extends StatelessWidget {
     return SingleChildScrollView(
       // scrollDirection: Axis.horizontal,
       child: Row(children: [
-        Container(
-          height: 150,
-          width: cardwidth(context),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            height: 150,
+            width: cardwidth(context),
+            margin: const EdgeInsets.only(left: 30,),
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.blue,width: 1.5),
+              borderRadius: const BorderRadius.all(Radius.circular(15)),
+            ),
 
-          // width: cardwidth(context),
-          margin: const EdgeInsets.only(left: 30, top: 39),
-          decoration: BoxDecoration(
-            border: Border.all(color: Colors.blue),
-            borderRadius: const BorderRadius.all(Radius.circular(15)),
-          ),
-
-          child: Row(
-            children: [
-              Container(
-                height: 150,
-                width: 100,
-                decoration: const BoxDecoration(
-                  color: Colors.blue,
-                  shape: BoxShape.rectangle,
-                  borderRadius: BorderRadius.horizontal(
-                    left: Radius.circular(5),
+            child: Row(
+              children: [
+                Container(
+                  height: 150,
+                  width: 100,
+                  decoration: const BoxDecoration(
+                    color: Colors.blue,
+                    shape: BoxShape.rectangle,
+                    borderRadius: BorderRadius.horizontal(
+                      left: Radius.circular(15),
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ]),
@@ -108,43 +111,49 @@ class MyApp extends StatelessWidget {
         // )),
         Container(
           height: 150,
-          width: 200,
-          margin: const EdgeInsets.only(top: 40, left: 30),
+          width: 220,
+          margin: const EdgeInsets.only(left: 30,top: 25),
           decoration: BoxDecoration(
             border: Border.all(color: Colors.blue, width: 3),
             borderRadius: const BorderRadius.all(Radius.circular(25)),
           ),
           child: Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
-            SizedBox(
+            Padding(padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+            child:SizedBox(
               width: 80,
               child: Image(
                 image: AssetImage(item.urlImage),
                 fit: BoxFit.fitWidth,
               ),
             ),
+            ),
 
             // ignore: prefer_const_constructors
             VerticalDivider(
               color: Colors.blue,
               thickness: 3,
-              width: 30,
+              width: 25,
               endIndent: 3,
               indent: 3,
             ),
 
-            Column(
-              children: [
-                const SizedBox(height: 40),
-                Text(
-                  item.title,
-                  style: const TextStyle(fontSize: 20),
+            SizedBox(
+                width: 90,
+                child: Column(
+                  children: [
+                    const SizedBox(height: 40),
+                    Text(
+                      item.title,
+                      style: const TextStyle(fontSize: 20),
+                    ),
+                    Text(
+                      item.subtitle,
+                      style: const TextStyle(fontSize: 10),
+                    ),
+                  ],
                 ),
-                Text(
-                  item.subtitle,
-                  style: const TextStyle(fontSize: 10),
-                ),
-              ],
-            ),
+              ),
+            
           ]),
         ),
       ]);
@@ -152,8 +161,12 @@ class MyApp extends StatelessWidget {
 
 cardwidth(BuildContext context) {
   double width = MediaQuery.of(context).size.width;
-  if (width < 380) {
-    width = width * 0.88;
+  if (width < 307) {
+    width = width * 0.75;
+    return width;
+  }
+  else if (width < 465) {
+    width = width * 0.85;
     return width;
   } 
   else if(width<600){
